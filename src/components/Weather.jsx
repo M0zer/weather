@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import styles from "./Weather.module.css";
+import WeatherChart from "./WeatherChart";
 
-const WeatherComponent = ({ location, setLocation }) => {
-  const [weatherData, setWeatherData] = useState(null);
+const WeatherComponent = ({ location }) => {
   const [loading, setLoading] = useState(true);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyForecast, setDailyForecast] = useState(null);
@@ -94,30 +95,33 @@ const WeatherComponent = ({ location, setLocation }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.leftside}>
         <h2>{currentWeather.temperature}°C</h2>
         <p>Időjárás: {weatherCodeToIcon(currentWeather.weathercode)}</p>
       </div>
-      <p>Hét napos előrejelzés</p>
-      <table>
-        {dailyForecast.daily.time.map((date, index) => (
-          <tr key={date}>
-            <td>
-              {" "}
-              <h2>{formatDay(date)}</h2>
-            </td>
-            <td>
-              {weatherCodeToIcon(dailyForecast.daily.weathercode[index])}{" "}
-              {dailyForecast.daily.precipitation_probability_mean[index]}%
-            </td>
-            <td>
-              {dailyForecast.daily.temperature_2m_min[index]}°C /{" "}
-              {dailyForecast.daily.temperature_2m_max[index]}°C
-            </td>
-          </tr>
-        ))}
-      </table>
+      <div className={styles.rightside}>
+        <p>Hét napos előrejelzés</p>
+        <table>
+          {dailyForecast.daily.time.map((date, index) => (
+            <tr key={date} className={styles.day}>
+              <td>
+                {" "}
+                <h2>{formatDay(date)}</h2>
+              </td>
+              <td>
+                {weatherCodeToIcon(dailyForecast.daily.weathercode[index])}{" "}
+                {dailyForecast.daily.precipitation_probability_mean[index]}%
+              </td>
+              <td>
+                {dailyForecast.daily.temperature_2m_min[index]}°C /{" "}
+                {dailyForecast.daily.temperature_2m_max[index]}°C
+              </td>
+            </tr>
+          ))}
+        </table>
+        <WeatherChart dailyForecast={dailyForecast}></WeatherChart>
+      </div>
     </div>
   );
 };

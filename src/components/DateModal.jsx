@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import GeocodingAutocomplete from "./GeocodingAutocomplete";
+import styles from "./DateModal.module.css";
 
 const DateModal = ({ selectedLocation, setSelectedLocation }) => {
   const [open, setOpen] = useState(true);
@@ -12,7 +13,7 @@ const DateModal = ({ selectedLocation, setSelectedLocation }) => {
   };
   return (
     <div>
-      <a onClick={openModal}>
+      <a onClick={openModal} className={styles.city}>
         {selectedLocation == null ? "" : selectedLocation.name}
       </a>
       <Modal isOpen={open} contentLabel="Example Modal">

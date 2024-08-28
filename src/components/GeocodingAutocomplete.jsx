@@ -3,11 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
 
-function GeocodingAutocomplete({
-  selectedLocation,
-  setSelectedLocation,
-  openModal,
-}) {
+function GeocodingAutocomplete({ setSelectedLocation, openModal }) {
   const [query, setQuery] = useState("");
   const [locations, setLocations] = useState([]);
   GeocodingAutocomplete.propTypes = {
