@@ -45,10 +45,16 @@ const WeatherComponent = ({ location, setLocation }) => {
   if (!currentWeather || !dailyForecast) {
     return <div>Error fetching data</div>;
   }
+  function capitalizeFirstLetter(word) {
+    if (!word) return "";
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
 
   const formatDay = (dateString) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat("hu-HU", { weekday: "long" }).format(date);
+    return capitalizeFirstLetter(
+      new Intl.DateTimeFormat("hu-HU", { weekday: "long" }).format(date)
+    );
   };
 
   const weatherCodeToIcon = (weathercode) => {
