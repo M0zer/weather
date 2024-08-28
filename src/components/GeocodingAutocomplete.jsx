@@ -3,7 +3,11 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
 
-function GeocodingAutocomplete({ selectedLocation, setSelectedLocation }) {
+function GeocodingAutocomplete({
+  selectedLocation,
+  setSelectedLocation,
+  openModal,
+}) {
   const [query, setQuery] = useState("");
   const [locations, setLocations] = useState([]);
   GeocodingAutocomplete.propTypes = {
@@ -74,6 +78,7 @@ function GeocodingAutocomplete({ selectedLocation, setSelectedLocation }) {
     setSelectedLocation(location);
     setQuery(location.name);
     setLocations([]);
+    openModal();
   };
 
   return (
@@ -99,23 +104,6 @@ function GeocodingAutocomplete({ selectedLocation, setSelectedLocation }) {
             </li>
           ))}
         </ul>
-      )}
-      {selectedLocation && (
-        <div className="selected-location">
-          <h3>Kiválasztott helyszín:</h3>
-          <p>
-            <strong>Név:</strong> {selectedLocation.name}
-          </p>
-          <p>
-            <strong>Ország:</strong> {selectedLocation.country}
-          </p>
-          <p>
-            <strong>Szélesség:</strong> {selectedLocation.latitude}
-          </p>
-          <p>
-            <strong>Hosszúság:</strong> {selectedLocation.longitude}
-          </p>
-        </div>
       )}
     </div>
   );
