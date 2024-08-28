@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+.leftside {
+  color: white;
+  width: 731px;
+  height: 24px;
+  top: 145px;
+  left: 570px;
+  gap: 0px;
+  opacity: 0px;
+  justify-content: center;
+}
+.rightside {
+  color: white;
+}
