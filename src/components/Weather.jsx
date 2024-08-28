@@ -61,36 +61,36 @@ const WeatherComponent = ({ location }) => {
   const weatherCodeToIcon = (weathercode) => {
     switch (weathercode) {
       case 0:
-        return "☀️"; // Tiszta ég
+        return "☀️";
       case 1:
       case 2:
       case 3:
-        return "⛅"; // Részben felhős
+        return "⛅";
       case 45:
       case 48:
-        return "🌫️"; // Köd
+        return "🌫️";
       case 51:
       case 53:
       case 55:
-        return "🌦️"; // Szitálás
+        return "🌦️";
       case 61:
       case 63:
       case 65:
-        return "🌧️"; // Eső
+        return "🌧️";
       case 71:
       case 73:
       case 75:
-        return "❄️"; // Hó
+        return "❄️";
       case 80:
       case 81:
       case 82:
-        return "🌦️"; // Záporok
+        return "🌦️";
       case 95:
       case 96:
       case 99:
-        return "⛈️"; // Vihar
+        return "⛈️";
       default:
-        return "❓"; // Ismeretlen kód
+        return "❓";
     }
   };
 
